@@ -15,6 +15,7 @@ dotenv.config();
 
 const isProd = process.env.NODE_ENV === 'production';
 const PORT = isProd ? process.env.PORT : process.env.DEV_PORT;
+const maxAge = process.env.SESSION_EXPIRES_IN * 1000 || 3600 * 1000;
 const app = express();
 
 /* Initialize express-session with REDIS */
@@ -28,7 +29,7 @@ app.use(
 		rolling: true,
 		saveUninitialized: false,
 		cookie: {
-			maxAge: process.env.SESSION_EXPIRES_IN * 1000,
+			maxAge,
 			secure: isProd,
 		},
 	})
