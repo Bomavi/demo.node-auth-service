@@ -1239,7 +1239,7 @@ http-errors@1.7.2:
     statuses ">= 1.5.0 < 2"
     toidentifier "1.0.0"
 
-http-errors@~1.7.2:
+http-errors@^1.7.3, http-errors@~1.7.2:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-1.7.3.tgz#6c619e4f9c60308c38519498c14fbb10aacebb06"
   integrity sha512-ZTTX0MWrsQ2ZAhA1cejAwDLycFsd7I7nVtnkT3Ol0aqodaKW+0CTZDQ1uBv5whptCnc8e8HeRRJxRs0kmm/Qfw==
@@ -2518,11 +2518,6 @@ resolve@^1.10.0:
   integrity sha512-vIpgF6wfuJOZI7KKKSP+HmiKggadPQAdsp5HiC1mvqnfp0gF1vdwgBWZIdrVft9pgqoMFQN+R7BSWZiBxx+BBw==
   dependencies:
     path-parse "^1.0.6"
-
-rest-api-errors@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/rest-api-errors/-/rest-api-errors-1.2.1.tgz#36d4f709b66f39a40a2fca580ba4fdabe41aa3e7"
-  integrity sha1-NtT3CbZvOaQKL8pYC6T9q+Qao+c=
 
 restore-cursor@^2.0.0:
   version "2.0.0"
