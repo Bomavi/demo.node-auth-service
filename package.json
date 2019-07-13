@@ -1,0 +1,30 @@
+{
+	"name": "node-redis-auth-demo",
+	"version": "1.0.0",
+	"author": "Maksym Bozhenov <max.bozh.n1mbo@gmail.com>",
+	"scripts": {
+		"lint": "eslint --ignore-path .gitignore . --ext js --fix",
+		"dev": "NODE_ENV=development DEBUG=debug,http,app,mongo,error nodemon -w src --ext js --exec \"npm run start:dev\"",
+		"prod": "NODE_ENV=production npm run start",
+		"start:dev": "npm-run-all lint start",
+		"start": "node ./src"
+	},
+	"devDependencies": {
+		"eslint": "^6.0.1",
+		"eslint-config-prettier": "^6.0.0",
+		"eslint-plugin-prettier": "^3.1.0",
+		"npm-run-all": "^4.1.5",
+		"prettier": "^1.18.2"
+	},
+	"dependencies": {
+		"debug": "^4.1.1",
+		"dotenv": "^8.0.0",
+		"express": "^4.17.1",
+		"express-pino-logger": "^4.0.0",
+		"mongoose": "^5.6.2",
+		"nodemon": "^1.19.1",
+		"pino": "^5.12.6",
+		"pino-pretty": "^3.2.0",
+		"rest-api-errors": "^1.2.1"
+	}
+}
