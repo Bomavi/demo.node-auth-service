@@ -4,7 +4,7 @@
 	"author": "Maksym Bozhenov <max.bozh.n1mbo@gmail.com>",
 	"scripts": {
 		"lint": "eslint --ignore-path .gitignore . --ext js --fix",
-		"dev": "NODE_ENV=development DEBUG=debug,http,app,mongo,error nodemon -w src --ext js --exec \"npm run start:dev\"",
+		"dev": "NODE_ENV=development DEBUG=debug,http,app,mongo,redis,error nodemon -w src --ext js --exec \"npm run start:dev\"",
 		"prod": "NODE_ENV=production npm run start",
 		"start:dev": "npm-run-all lint start",
 		"start": "node ./src"
