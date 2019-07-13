@@ -1,3 +1,3 @@
 module.exports = {
-	mongoConnect: require('./redis'),
+	redis: require('./redis'),
 };

@@ -6,7 +6,9 @@ global.rootRequire = name => require(`${__dirname}/${name}`);
 
 const { debugLogger } = rootRequire('utils');
 const { api } = rootRequire('routes');
-// const { mongoConnect } = rootRequire('config');
+const {
+	redis: { session, redisOptions, redisStore },
+} = rootRequire('config');
 
 /* Get .env constants */
 dotenv.config();
@@ -14,8 +16,15 @@ dotenv.config();
 const PORT = process.env.NODE_ENV === 'production' ? process.env.PORT : process.env.DEV_PORT;
 const app = express();
 
-/* Initialize REDIS configuration */
-// mongoConnect();
+/* Initialize express-session with REDIS */
+app.use(
+	session({
+		store: new redisStore(redisOptions),
+		secret: process.env.SESSION_SECRET,
+		resave: true,
+		saveUninitialized: false,
+	})
+);
 
 /* Initialize app routes */
 app.use('/api', api());
