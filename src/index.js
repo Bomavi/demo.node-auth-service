@@ -13,16 +13,24 @@ const {
 /* Get .env constants */
 dotenv.config();
 
-const PORT = process.env.NODE_ENV === 'production' ? process.env.PORT : process.env.DEV_PORT;
+const isProd = process.env.NODE_ENV === 'production';
+const PORT = isProd ? process.env.PORT : process.env.DEV_PORT;
 const app = express();
 
 /* Initialize express-session with REDIS */
+if (isProd) app.set('trust proxy', 1);
+
 app.use(
 	session({
 		store: new redisStore(redisOptions),
 		secret: process.env.SESSION_SECRET,
 		resave: true,
+		rolling: true,
 		saveUninitialized: false,
+		cookie: {
+			maxAge: process.env.SESSION_EXPIRES_IN * 1000,
+			secure: isProd,
+		},
 	})
 );
 

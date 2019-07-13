@@ -10,7 +10,6 @@ dotenv.config();
 
 const redisOptions = {
 	client: redisClient,
-	ttl: process.env.SESSION_EXPIRES_IN || 3600,
 };
 
 redisClient.on('error', err => {
