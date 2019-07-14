@@ -1,15 +1,14 @@
 const express = require('express');
 
 const { errorHandler } = rootRequire('middleware');
-const { Auth } = rootRequire('models');
 const { AuthController } = rootRequire('controllers');
-
-const models = { Auth };
 
 const api = () => {
 	const router = express();
 
-	router.use('/login', AuthController(models));
+	router.post('/login', AuthController.login);
+	router.post('/logout', AuthController.logout);
+
 	router.use(errorHandler);
 
 	return router;
