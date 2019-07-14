@@ -36,7 +36,7 @@ app.use(
 );
 
 /* Initialize app routes */
-app.use('/api', api());
+app.use('/auth', api());
 
 app.listen(PORT, () => {
 	debugLogger('app', `Server is running on port ${PORT}`);

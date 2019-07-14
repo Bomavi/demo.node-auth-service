@@ -6,8 +6,8 @@ const { AuthController } = rootRequire('controllers');
 const api = () => {
 	const router = express();
 
-	router.post('/login', AuthController.login);
-	router.post('/logout', AuthController.logout);
+	router.post('/login', AuthController.login());
+	router.post('/logout', AuthController.logout());
 
 	router.use(errorHandler);
 
