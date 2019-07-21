@@ -1,13 +1,18 @@
-const axios = require('axios');
-// const dotenv = require('dotenv');
+/* npm imports: common */
 const JWT = require('jsonwebtoken');
 
-// dotenv.config();
+/* root imports: common */
+const { ApiClient } = rootRequire('config');
+const { debugLogger } = rootRequire('utils');
 
-const isProd = process.env.NODE_ENV === 'production';
-const apiUrl = isProd ? '/api' : 'http://localhost:9000/api';
+// const isProd = process.env.NODE_ENV === 'production';
+// const apiUrl = isProd ? '/api' : 'http://localhost:9000/api';
+
+// const apiClient = new ApiClient({ apiPrefix: 'http://localhost/api' });
+const apiClient = new ApiClient({ apiPrefix: '/api' });
 
 const login = () => async (req, res, next) => {
+	// debugLogger('debug', `req: %o`, req.body);
 	const { username, password, isGuest } = req.body;
 	const credentials = {
 		username: '',
@@ -23,7 +28,8 @@ const login = () => async (req, res, next) => {
 	}
 
 	try {
-		const response = await axios.post(`${apiUrl}/validate/user`, credentials);
+		const response = await apiClient.post('/validate/user', credentials);
+		debugLogger('debug', 'Response: %o', response);
 		const { userId } = response.data();
 
 		JWT.sign(
@@ -32,7 +38,6 @@ const login = () => async (req, res, next) => {
 			{ expiresIn: process.env.SESSION_EXPIRES_IN },
 			(err, token) => {
 				if (err) return next(err);
-
 				req.session.cookie.accessToken = token;
 				res.status(200).send({ token });
 			}
