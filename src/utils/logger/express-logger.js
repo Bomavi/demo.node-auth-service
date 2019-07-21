@@ -1,3 +1,4 @@
+/* npm imports: common */
 const pino = require('express-pino-logger');
 
 const expressLogger = pino({

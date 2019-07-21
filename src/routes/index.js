@@ -1,5 +1,7 @@
+/* npm imports: common */
 const express = require('express');
 
+/* root imports: common */
 const { errorHandler } = rootRequire('middleware');
 const { AuthController } = rootRequire('controllers');
 

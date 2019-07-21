@@ -1,3 +1,4 @@
+/* npm imports: common */
 const debug = require('debug');
 
 module.exports = {

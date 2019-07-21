@@ -1,5 +1,7 @@
+/* npm imports: common */
 const createError = require('http-errors');
 
+/* root imports: common */
 const { debugLogger } = rootRequire('utils');
 
 const errorHandler = (err, _req, res, _next) => {
