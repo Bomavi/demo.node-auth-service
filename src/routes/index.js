@@ -9,7 +9,9 @@ const api = () => {
 	const router = express();
 
 	router.post('/login', AuthController.login());
+	router.post('/register', AuthController.register());
 	router.post('/logout', AuthController.logout());
+	router.post('/authenticate', AuthController.authenticate());
 
 	router.use(errorHandler);
 
