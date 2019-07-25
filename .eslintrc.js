@@ -16,7 +16,9 @@ module.exports = {
 		'plugin:prettier/recommended',
 	],
 	globals: {
-		rootRequire: false
+		rootRequire: false,
+		SERVICE_NAME: false,
+		SERVICE_TOKEN: false,
 	},
 	rules: {
 		// eslint
@@ -29,6 +31,7 @@ module.exports = {
 		'prefer-object-spread': 'error',
 		'space-before-blocks': 'error',
 		'spaced-comment': ['error', 'always'],
-		'no-unused-vars': ['error', { 'argsIgnorePattern': '^_', 'ignoreRestSiblings': true }]
+		'no-unused-vars': ['error', { 'argsIgnorePattern': '^_', 'ignoreRestSiblings': true }],
+		'require-atomic-updates': 0,
 	},
 };
