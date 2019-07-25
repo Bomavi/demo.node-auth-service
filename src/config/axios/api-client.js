@@ -62,8 +62,6 @@ module.exports = class ApiClient {
 			params,
 			baseURL: this.prefix,
 			data: body,
-			headers: { 'content-type': 'application/json' },
-			withCredentials: true,
 			options,
 		})
 			.then(response => {

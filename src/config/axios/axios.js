@@ -2,8 +2,7 @@
 const axiosBase = require('axios');
 
 const axios = axiosBase.create({
-	// baseURL: `http://localhost`,
-	// withCredentials: true,
+	withCredentials: false,
 	headers: {
 		'Content-Type': 'application/json',
 	},
@@ -11,7 +10,7 @@ const axios = axiosBase.create({
 
 axios.interceptors.request.use(
 	config => {
-		// do something
+		config.headers.Authorization = `${SERVICE_NAME}:${SERVICE_TOKEN}`;
 		return config;
 	},
 	error => Promise.reject(error)
